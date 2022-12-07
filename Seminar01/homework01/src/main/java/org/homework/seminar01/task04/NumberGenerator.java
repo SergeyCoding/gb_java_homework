@@ -16,7 +16,7 @@ public class NumberGenerator implements Iterable<Integer>, Iterator<Integer> {
         this.numberMask = numberMask;
     }
 
-    void Init() {
+    void init() {
         initialized = true;
 
         var cnt = 0;
@@ -39,7 +39,7 @@ public class NumberGenerator implements Iterable<Integer>, Iterator<Integer> {
     @Override
     public boolean hasNext() {
         if (!initialized)
-            Init();
+            init();
 
         return current < maxNumber;
 
@@ -48,7 +48,7 @@ public class NumberGenerator implements Iterable<Integer>, Iterator<Integer> {
     @Override
     public Integer next() {
         if (!initialized)
-            Init();
+            init();
 
         var current_str = "00000000000000000000000" + current;
         var current_cnt = current_str.length();

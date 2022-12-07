@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Реализовать простой калькулятор
  */
 public class SimpleCalc {
-    public static void Run() {
+    public static void run() {
         System.out.println("\nTask03");
 
         var sc = new Scanner(System.in);
@@ -32,16 +32,12 @@ public class SimpleCalc {
     }
 
     static double operation(double n1, double n2, char op) {
-        switch (op) {
-            case '+':
-                return n1 + n2;
-            case '-':
-                return n1 - n2;
-            case '*':
-                return n1 * n2;
-            case '/':
-                return n1 / n2;
-        }
-        return Double.NaN;
+        return switch (op) {
+            case '+' -> n1 + n2;
+            case '-' -> n1 - n2;
+            case '*' -> n1 * n2;
+            case '/' -> n1 / n2;
+            default -> Double.NaN;
+        };
     }
 }

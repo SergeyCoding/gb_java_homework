@@ -22,20 +22,11 @@ public class Main {
         var s = ss.nextLine();
 
         switch (s) {
-            case "1":
-                Task01.Run();
-                break;
-            case "2":
-                PrimeNumbers.Run();
-                break;
-            case "3":
-                SimpleCalc.Run();
-                break;
-            case "4":
-                QweExpression.Run();
-                break;
-            default:
-                System.out.println("Задача не выбрана");
+            case "1" -> Task01.run();
+            case "2" -> PrimeNumbers.run();
+            case "3" -> SimpleCalc.run();
+            case "4" -> QweExpression.run();
+            default -> System.out.println("Задача не выбрана");
         }
     }
 }

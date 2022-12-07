@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Требуется восстановить выражение до верного равенства. Предложить хотя бы одно решение или сообщить, что его нет.
  */
 public class QweExpression {
-    public static void Run() {
+    public static void run() {
         System.out.println("\nTask04");
 
         var s = "2? + ?5 = 69";
@@ -25,13 +25,13 @@ public class QweExpression {
         var ss = s.split("%");
 
         //String s1 = new Scanner(System.in).nextLine();
-        var res = new QweExpression().Solve(ss[0], ss[1], ss[2]);
+        var res = new QweExpression().solve(ss[0], ss[1], ss[2]);
         System.out.println(res);
 
     }
 
 
-    String Solve(String q, String w, String e) {
+    String solve(String q, String w, String e) {
 
         var qq = new NumberGenerator(q);
         var ww = new NumberGenerator(w);
