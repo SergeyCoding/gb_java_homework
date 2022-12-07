@@ -8,6 +8,8 @@ import java.util.Scanner;
  */
 public class SimpleCalc {
     public static void Run() {
+        System.out.println("\nTask03");
+
         var sc = new Scanner(System.in);
 
         System.out.println("Вводите сначала два числа, потом операцию (+, -, *, /)");

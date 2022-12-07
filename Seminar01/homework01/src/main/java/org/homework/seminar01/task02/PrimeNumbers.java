@@ -5,6 +5,8 @@ package org.homework.seminar01.task02;
  */
 public class PrimeNumbers {
     public static void Run() {
+        System.out.println("\nTask02");
+
         var pn = new PrimeNumbers().Get(1000);
 
         for (var n : pn) {

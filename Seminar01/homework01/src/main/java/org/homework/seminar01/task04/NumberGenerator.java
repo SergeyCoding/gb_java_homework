@@ -3,34 +3,37 @@ package org.homework.seminar01.task04;
 import java.util.Iterator;
 
 public class NumberGenerator implements Iterable<Integer>, Iterator<Integer> {
-    private final char[] numberMask;
+    private final char[] numberMaskArray;
+    private final String numberMask;
     private boolean initialized = false;
     private int maxNumber;
     private int current;
 
 
     public NumberGenerator(String numberMask) {
-        this.numberMask = numberMask.toCharArray();
+
+        this.numberMaskArray = numberMask.toCharArray();
+        this.numberMask = numberMask;
     }
 
     void Init() {
         initialized = true;
 
         var cnt = 0;
-        for (var c : numberMask) {
+        for (var c : numberMaskArray) {
             if (c == '?')
                 cnt++;
         }
 
         current = 0;
-        maxNumber = (int) Math.pow(10, cnt) ;
+        maxNumber = (int) Math.pow(10, cnt);
     }
 
 
     @Override
     public Iterator<Integer> iterator() {
 
-        return this;
+        return new NumberGenerator(numberMask);
     }
 
     @Override
@@ -52,7 +55,7 @@ public class NumberGenerator implements Iterable<Integer>, Iterator<Integer> {
 
         var sb = new StringBuilder();
 
-        for (char c : numberMask) {
+        for (char c : numberMaskArray) {
             if (c == '?')
                 sb.append(current_str.charAt(--current_cnt));
             else
