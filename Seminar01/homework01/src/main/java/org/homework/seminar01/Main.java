@@ -1,19 +1,13 @@
 package org.homework.seminar01;
 
 import org.homework.seminar01.task01.Task01;
+import org.homework.seminar01.task02.PrimeNumbers;
+import org.homework.seminar01.task03.SimpleCalc;
+import org.homework.seminar01.task04.QweExpression;
 
 import java.util.Scanner;
 
-/*
 
-
-Вывести все простые числа от 1 до 1000
-
-Реализовать простой калькулятор
-
-*+Задано уравнение вида q + w = e, q, w, e >= 0. Некоторые цифры могут быть заменены знаком вопроса, например 2? + ?5 = 69.
-Требуется восстановить выражение до верного равенства. Предложить хотя бы одно решение или сообщить, что его нет.
-*/
 public class Main {
     public static void main(String[] args) {
         System.out.println("Seminar01");
@@ -23,22 +17,25 @@ public class Main {
         System.out.println("4. Уравнение q + w = e, q, w, e >= 0 ");
         System.out.print("Выберите номер задачи: ");
 
-        var ss=new Scanner(System.in);
+        var ss = new Scanner(System.in);
 
-        var s=ss.nextLine();
+        var s = ss.nextLine();
 
-        switch (s){
+        switch (s) {
             case "1":
                 Task01.Run();
                 break;
             case "2":
+                PrimeNumbers.Run();
                 break;
             case "3":
+                SimpleCalc.Run();
                 break;
             case "4":
+                QweExpression.Run();
                 break;
             default:
-                System.out.println( "Задача не выбрана");
+                System.out.println("Задача не выбрана");
         }
     }
 }
