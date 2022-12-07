@@ -20,13 +20,26 @@ public class QweExpression {
 
     String Solve(String q, String w, String e) {
 
+        var isAnswer = false;
+
         var qq = new NumberGenerator(q);
         var ww = new NumberGenerator(w);
         var ee = new NumberGenerator(e);
 
         for (var qcur : qq) {
-            System.out.println(qcur);
+            for (var wcur : ww) {
+                for (var ecur : ee) {
+                    if (qcur + wcur == wcur) {
+                        isAnswer = true;
+                        System.out.printf("%d + %d = %d", qcur, wcur, ecur);
+
+                    }
+                }
+
+            }
         }
+        if (!isAnswer)
+            System.out.println("Нет решения");
 
         return q + w + e;
     }

@@ -11,23 +11,23 @@ public class Task01 {
         System.out.println("\nTask01");
 
         System.out.print("Номер: ");
-        var numStr=new Scanner(System.in).nextLine();
+        var numStr = new Scanner(System.in).nextLine();
 
-        int num=Integer.parseInt(numStr);
+        int num = Integer.parseInt(numStr);
 
-        if (num<0){
+        if (num < 0) {
             System.out.println("Введите корректные данные");
             return;
         }
 
-        int sum=0;
-        int factorial=1;
+        int sum = 0;
+        int factorial = 1;
         for (int i = 1; i <= num; i++) {
-            sum+=i;
-            factorial*=i;
+            sum += i;
+            factorial *= i;
         }
 
-        System.out.println("Треугольное число: "+sum );
-        System.out.println("Факториал: "+factorial );
+        System.out.println("Треугольное число: " + sum);
+        System.out.println("Факториал: " + factorial);
     }
 }

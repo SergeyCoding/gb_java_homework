@@ -23,26 +23,29 @@ public class NumberGenerator implements Iterable<Integer>, Iterator<Integer> {
         }
 
         current = 0;
-        maxNumber = (int) Math.pow(10, cnt) - 1;
+        maxNumber = (int) Math.pow(10, cnt) ;
     }
 
 
     @Override
     public Iterator<Integer> iterator() {
+
         return this;
     }
 
     @Override
     public boolean hasNext() {
+        if (!initialized)
+            Init();
+
         return current < maxNumber;
+
     }
 
     @Override
     public Integer next() {
         if (!initialized)
             Init();
-
-        var result = 0;
 
         var current_str = "00000000000000000000000" + current;
         var current_cnt = current_str.length();
@@ -51,7 +54,9 @@ public class NumberGenerator implements Iterable<Integer>, Iterator<Integer> {
 
         for (char c : numberMask) {
             if (c == '?')
-                sb.append(current_str.indexOf(--current_cnt));
+                sb.append(current_str.charAt(--current_cnt));
+            else
+                sb.append(c);
         }
 
         current++;
