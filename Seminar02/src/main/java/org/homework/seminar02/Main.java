@@ -1,31 +1,34 @@
 package org.homework.seminar02;
 
+import org.homework.seminar02.task01.SqlBuilderDispatcher;
+import org.homework.seminar02.task02.BubbleSortingDispatcher;
+import org.homework.seminar02.task03.JsonParserDispatcher;
+import org.homework.seminar02.task04.SimpleCalcDispatcher;
+
+import java.util.Scanner;
+
 /**
- * Дана строка sql-запроса "select * from students where ". Сформируйте часть WHERE этого запроса, используя StringBuilder. Данные для фильтрации приведены ниже в виде json строки.
- * Если значение null, то параметр не должен попадать в запрос.
- * <p>
- * Параметры для фильтрации: {"name":"Ivanov", "country":"Russia", "city":"Moscow", "age":"null"}
- * <p>
- * Реализуйте алгоритм сортировки пузырьком числового массива, результат после каждой итерации запишите в лог-файл.
- * <p>
- * Дана json строка (можно сохранить в файл и читать из файла) (Коллеги, если сложно будет распарсить .json -> можно работать как со строкой обычной)
- * <p>
- * [{"фамилия":"Иванов","оценка":"5","предмет":"Математика"},{"фамилия":"Петрова","оценка":"4","предмет":"Информатика"},{"фамилия":"Краснов","оценка":"5","предмет":"Физика"}]
- * <p>
- * Написать метод(ы), который распарсит json и, используя StringBuilder, создаст строки вида: Студент [фамилия] получил [оценка] по предмету [предмет].
- * <p>
- * Пример вывода:
- * <p>
- * Студент Иванов получил 5 по предмету Математика.
- * <p>
- * Студент Петрова получил 4 по предмету Информатика.
- * <p>
- * Студент Краснов получил 5 по предмету Физика.
- * <p>
- * 4*. К калькулятору из предыдущего дз добавить логирование.
+ * Семинар 2.
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        System.out.println("Seminar02");
+        System.out.println("1. Sql-builder ");
+        System.out.println("2. Пузырьковая сортировка ");
+        System.out.println("3. Json-парсер ");
+        System.out.println("4. Калькулятор с логированием ");
+        System.out.print("Выберите номер задачи: ");
+
+        try (var ss = new Scanner(System.in)) {
+            var s = ss.nextLine();
+
+            switch (s) {
+                case "1" -> SqlBuilderDispatcher.run();
+                case "2" -> BubbleSortingDispatcher.run();
+                case "3" -> JsonParserDispatcher.run();
+                case "4" -> SimpleCalcDispatcher.run();
+                default -> System.out.println("Задача не выбрана");
+            }
+        }
     }
 }
