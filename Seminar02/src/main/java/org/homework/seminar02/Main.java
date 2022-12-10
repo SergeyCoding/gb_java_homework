@@ -12,6 +12,12 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
+
+        SqlBuilderDispatcher.run();
+
+        if (true)
+            return;
+
         System.out.println("Seminar02");
         System.out.println("1. Sql-builder ");
         System.out.println("2. Пузырьковая сортировка ");

@@ -46,8 +46,9 @@ public class SqlBuilder {
                 sb.append(" and ");
 
             sb.append(kv[0].replace("\"", ""))
-                    .append(" = ")
-                    .append(kv[1].replace("\"", ""));
+                    .append(" = '")
+                    .append(kv[1].replace("\"", ""))
+                    .append("'");
         }
 
         return sb.toString();
