@@ -4,8 +4,10 @@ import java.util.Objects;
 import java.util.Scanner;
 
 /**
- * Задано уравнение вида q + w = e, q, w, e >= 0. Некоторые цифры могут быть заменены знаком вопроса, например 2? + ?5 = 69.
- * Требуется восстановить выражение до верного равенства. Предложить хотя бы одно решение или сообщить, что его нет.
+ * Задано уравнение вида q + w = e, q, w, e >= 0. Некоторые цифры могут быть
+ * заменены знаком вопроса, например 2? + ?5 = 69.
+ * Требуется восстановить выражение до верного равенства. Предложить хотя бы
+ * одно решение или сообщить, что его нет.
  */
 public class QweExpression {
     public static void run() {
@@ -14,22 +16,22 @@ public class QweExpression {
         var s = "2? + ?5 = 69";
 
         System.out.print("Введите выражение: ");
-        var s_inp = new Scanner(System.in).nextLine();
+        try (Scanner scanner = new Scanner(System.in)) {
+            var s_inp = scanner.nextLine();
 
-        if (!Objects.equals(s_inp, ""))
-            s = s_inp;
-
+            if (!Objects.equals(s_inp, ""))
+                s = s_inp;
+        }
         System.out.println("Задача: " + s);
 
         s = s.replace(" ", "").replace("+", "%").replace("=", "%");
         var ss = s.split("%");
 
-        //String s1 = new Scanner(System.in).nextLine();
+        // String s1 = new Scanner(System.in).nextLine();
         var res = new QweExpression().solve(ss[0], ss[1], ss[2]);
         System.out.println(res);
 
     }
-
 
     String solve(String q, String w, String e) {
 

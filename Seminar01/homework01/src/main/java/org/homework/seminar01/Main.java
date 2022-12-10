@@ -7,7 +7,6 @@ import org.homework.seminar01.task04.QweExpression;
 
 import java.util.Scanner;
 
-
 public class Main {
     public static void main(String[] args) {
         System.out.println("Seminar01");
@@ -17,16 +16,16 @@ public class Main {
         System.out.println("4. Уравнение q + w = e, q, w, e >= 0 ");
         System.out.print("Выберите номер задачи: ");
 
-        var ss = new Scanner(System.in);
+        try (var ss = new Scanner(System.in)) {
+            var s = ss.nextLine();
 
-        var s = ss.nextLine();
-
-        switch (s) {
-            case "1" -> Task01.run();
-            case "2" -> PrimeNumbers.run();
-            case "3" -> SimpleCalc.run();
-            case "4" -> QweExpression.run();
-            default -> System.out.println("Задача не выбрана");
+            switch (s) {
+                case "1" -> Task01.run();
+                case "2" -> PrimeNumbers.run();
+                case "3" -> SimpleCalc.run();
+                case "4" -> QweExpression.run();
+                default -> System.out.println("Задача не выбрана");
+            }
         }
     }
 }
