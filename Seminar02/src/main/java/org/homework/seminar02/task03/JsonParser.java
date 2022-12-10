@@ -1,7 +1,6 @@
 package org.homework.seminar02.task03;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.*;
 
 /**
  * Дана json строка (можно сохранить в файл и читать из файла)
