@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class BubbleSortingDispatcher {
     public static void run() {
+        System.out.println("\nСеминар 2.");
+        System.out.println("Задача 2.");
 
         System.out.print("Введите размер массива: ");
 
