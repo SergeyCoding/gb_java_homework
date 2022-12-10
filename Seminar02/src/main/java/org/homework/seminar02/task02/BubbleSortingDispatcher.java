@@ -1,5 +1,6 @@
 package org.homework.seminar02.task02;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BubbleSortingDispatcher {
@@ -20,6 +21,22 @@ public class BubbleSortingDispatcher {
             } while (n <= 0);
         }
 
-        
+        var arr = generateArray(n, 100);
+        System.out.println(Arrays.toString(arr));
+
+        var bs = new BubbleSorting(arr, "log.txt");
+        System.out.println(Arrays.toString(bs.sort()));
+
+        System.out.println("Процесс сортировки в лог-файле log.txt");
+    }
+
+    private static int[] generateArray(int n, int maxNum) {
+        int[] arr = new int[n];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = 1 + (int) Math.round(Math.random() * maxNum);
+        }
+
+        return arr;
     }
 }
