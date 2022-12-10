@@ -26,7 +26,7 @@ public class SqlBuilderDispatcher {
             System.out.print("Вы хотите ввести свои значения? [y/N]: ");
             var yesNo = sc.nextLine();
 
-            if (yesNo == null || yesNo.equalsIgnoreCase("N"))
+            if (yesNo == null || yesNo.isBlank() || yesNo.equalsIgnoreCase("N"))
                 return "{\"name\":\"Ivanov\", \"country\":\"Russia\", \"city\":\"Moscow\", \"age\":\"null\"}";
 
             String[] paramArray = {"name", "country", "city", "age"};
