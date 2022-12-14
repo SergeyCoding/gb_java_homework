@@ -2,6 +2,7 @@ package org.homework.seminar03;
 
 
 import org.homework.seminar03.task01.MergeSortManager;
+import org.homework.seminar03.task02.RemoveEvenManager;
 
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class Main {
 
             switch (s) {
                 case "1" -> MergeSortManager.run();
-//                case "2" -> BubbleSortingDispatcher.run();
+                case "2" -> RemoveEvenManager.run();
 //                case "3" -> JsonParser.run();
                 default -> System.out.println("Задача не выбрана");
             }

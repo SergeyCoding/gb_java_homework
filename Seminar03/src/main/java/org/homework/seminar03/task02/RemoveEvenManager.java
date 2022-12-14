@@ -1,19 +1,14 @@
-package org.homework.seminar03.task01;
+package org.homework.seminar03.task02;
 
 import org.homework.tools.ListGenerator;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-/**
- * Реализовать алгоритм сортировки слиянием
- */
-public class MergeSortManager {
-
-
+public class RemoveEvenManager {
     public static void run() {
         System.out.println("\nСеминар 3.");
-        System.out.println("Задача 1.");
+        System.out.println("Задача 2.");
 
         System.out.print("Введите размер массива: ");
         int n = 0;
@@ -32,8 +27,7 @@ public class MergeSortManager {
         var arr = ListGenerator.generateList(n);
         System.out.println(Arrays.toString(arr.toArray()));
 
-        var ms = new MergeSortOnThePlace(arr);
-        System.out.println(Arrays.toString(ms.sort().toArray()));
+        var removeEven = new RemoveEven(arr);
+        System.out.println(Arrays.toString(removeEven.execute().toArray()));
     }
-
 }
