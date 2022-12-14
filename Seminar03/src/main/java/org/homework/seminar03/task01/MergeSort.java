@@ -18,6 +18,8 @@ public class MergeSort {
     }
 
     public List<Integer> sortRecursive(List<Integer> curArray) {
+        curArray = new ArrayList<>(curArray);
+
         if (curArray.size() < 2) {
             return curArray;
         }
@@ -34,8 +36,8 @@ public class MergeSort {
         var left = curArray.subList(0, middle);
         var right = curArray.subList(middle, curArray.size());
 
-        left = new ArrayList<>(sortRecursive(left));
-        right = new ArrayList<>(sortRecursive(right));
+        left = sortRecursive(left);
+        right = sortRecursive(right);
 
         return merge(left, right);
     }

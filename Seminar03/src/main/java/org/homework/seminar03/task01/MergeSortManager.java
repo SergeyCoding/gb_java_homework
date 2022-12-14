@@ -30,7 +30,7 @@ public class MergeSortManager {
         var arr = generateList(n);
         System.out.println(Arrays.toString(arr.toArray()));
 
-        var ms = new MergeSort(arr);
+        var ms = new MergeSortOnThePlace(arr);
         System.out.println(Arrays.toString(ms.sort().toArray()));
     }
 
