@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * Реализовать алгоритм сортировки слиянием
  */
-public class MergeSortOnThePlace {
+public class MergeSortNoRecursion {
     private final List<Integer> arr;
 
-    public MergeSortOnThePlace(List<Integer> arr) {
+    public MergeSortNoRecursion(List<Integer> arr) {
         this.arr = new ArrayList<>(arr);
     }
 
