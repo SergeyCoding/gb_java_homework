@@ -21,26 +21,22 @@ public class ConsoleHelper {
 
     public String getString(String prompt) {
         System.out.println(prompt);
-        
+
         return scannerIn.nextLine();
     }
 
     private static int getFromConsole(String prompt, Predicate<Integer> fun) {
-        int n;
-
         while (true) {
             System.out.print(prompt);
             try {
-                n = Integer.parseInt(scannerIn.nextLine());
+                var n = Integer.parseInt(scannerIn.nextLine());
 
                 if (fun.test(n)) {
-                    break;
+                    return n;
                 }
             } catch (NumberFormatException ignored) {
             }
             System.out.print("Ошибка! ");
         }
-
-        return n;
     }
 }
