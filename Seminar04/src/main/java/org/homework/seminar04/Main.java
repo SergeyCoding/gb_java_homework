@@ -17,10 +17,6 @@ import org.homework.tools.ConsoleHelper;
 public class Main {
     public static void main(String[] args) {
 
-        SimpleCalculatorManager.run();
-        if (true)
-            return;
-
         System.out.println("Seminar04");
         System.out.println("1. Revert LinkedList");
         System.out.println("2. Очередь на LinkedList");

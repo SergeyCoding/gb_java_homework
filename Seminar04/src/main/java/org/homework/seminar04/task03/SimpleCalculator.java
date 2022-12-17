@@ -16,7 +16,7 @@ public class SimpleCalculator {
     private final Stack<String> calcStackHistory = new Stack<>();
 
     public SimpleCalculator() {
-        caclStackInit();
+        calcStackInit();
     }
 
     public static boolean isOperation(String s) {
@@ -63,7 +63,7 @@ public class SimpleCalculator {
                 calcStack.push(calcStack.pop() / tmp);
             }
             case "c" -> {
-                caclStackInit();
+                calcStackInit();
 
                 calcStackHistory.pop();
 
@@ -76,13 +76,13 @@ public class SimpleCalculator {
                 }
             }
             case "cc" -> {
-                caclStackInit();
+                calcStackInit();
                 calcStackHistory.clear();
             }
         }
     }
 
-    private void caclStackInit() {
+    private void calcStackInit() {
         calcStack.clear();
         calcStack.push(0d);
     }

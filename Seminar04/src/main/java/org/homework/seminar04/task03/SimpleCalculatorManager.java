@@ -22,7 +22,7 @@ public class SimpleCalculatorManager {
 
         System.out.println("Вводите либо число, либо операцию (+, -, *, /)");
         System.out.println("с - для отмены операции");
-        System.out.println("сс - сброс (после него отмена невозможна)\n");
+        System.out.println("сс - сброс (после него отмена невозможна)");
         System.out.println("exit - выход\n");
 
         var calc = new SimpleCalculator();
