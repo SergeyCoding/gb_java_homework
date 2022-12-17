@@ -13,8 +13,8 @@ import java.util.logging.SimpleFormatter;
 
 public class SimpleCalc {
     public static void run() {
-        System.out.println("\nСеминар 2.");
-        System.out.println("Задача 4.");
+        System.out.println("\nСеминар 4.");
+        System.out.println("Задача 3.");
 
         var logFilename = "calc_log.txt";
         var logger = Logger.getLogger(SimpleCalc.class.getName());

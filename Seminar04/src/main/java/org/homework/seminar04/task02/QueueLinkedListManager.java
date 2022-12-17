@@ -7,6 +7,8 @@ package org.homework.seminar04.task02;
  */
 public class QueueLinkedListManager {
     public static void run() {
+        System.out.println("\nСеминар 4.");
+        System.out.println("Задача 2.");
     }
 }
 

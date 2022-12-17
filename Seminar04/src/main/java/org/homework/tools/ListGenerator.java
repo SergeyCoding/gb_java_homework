@@ -1,6 +1,7 @@
 package org.homework.tools;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -8,6 +9,10 @@ public class ListGenerator {
 
     public static final int MinRandomNumber = 0;
     public static final int MaxRandomNumber = 100;
+
+    public static LinkedList<Integer> generateLinkedList(int length) {
+        return new LinkedList<>(generateList(length));
+    }
 
     public static List<Integer> generateList(int length) {
         List<Integer> arr = new ArrayList<Integer>();

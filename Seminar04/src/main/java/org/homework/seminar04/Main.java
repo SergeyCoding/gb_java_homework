@@ -16,7 +16,7 @@ import org.homework.tools.ConsoleHelper;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Seminar03");
+        System.out.println("Seminar04");
         System.out.println("1. Revert LinkedList");
         System.out.println("2. Очередь на LinkedList");
         System.out.println("3. Калькулятор с возможностью отмены");

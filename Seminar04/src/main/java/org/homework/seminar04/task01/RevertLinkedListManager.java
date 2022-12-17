@@ -10,16 +10,16 @@ import java.util.Arrays;
  */
 public class RevertLinkedListManager {
     public static void run() {
-        System.out.println("\nСеминар 3.");
+        System.out.println("\nСеминар 4.");
         System.out.println("Задача 1.");
 
         int n = ConsoleHelper.getNaturalInteger("Введите размер массива: ");
 
 
-        var arr = ListGenerator.generateList(n);
-        System.out.println(Arrays.toString(arr.toArray()));
+        var linkedList = ListGenerator.generateLinkedList(n);
+        System.out.println(Arrays.toString(linkedList.toArray()));
 
-//        var ms = new MergeSortNoRecursion(arr);
-//        System.out.println(Arrays.toString(ms.sort().toArray()));
+        var revertLinkedList = new RevertLinkedList(linkedList);
+        System.out.println(Arrays.toString(revertLinkedList.revert().toArray()));
     }
 }
