@@ -2,7 +2,7 @@ package org.homework.seminar04;
 
 import org.homework.seminar04.task01.RevertLinkedListManager;
 import org.homework.seminar04.task02.QueueLinkedListManager;
-import org.homework.seminar04.task03.CalculatorManager;
+import org.homework.seminar04.task03.SimpleCalculatorManager;
 import org.homework.tools.ConsoleHelper;
 
 /**
@@ -16,6 +16,11 @@ import org.homework.tools.ConsoleHelper;
  */
 public class Main {
     public static void main(String[] args) {
+
+        SimpleCalculatorManager.run();
+        if (true)
+            return;
+
         System.out.println("Seminar04");
         System.out.println("1. Revert LinkedList");
         System.out.println("2. Очередь на LinkedList");
@@ -27,7 +32,7 @@ public class Main {
         switch (numberTask) {
             case 1 -> RevertLinkedListManager.run();
             case 2 -> QueueLinkedListManager.run();
-            case 3 -> CalculatorManager.run();
+            case 3 -> SimpleCalculatorManager.run();
             default -> System.out.println("Задача не выбрана");
         }
     }

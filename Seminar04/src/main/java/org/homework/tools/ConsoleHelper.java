@@ -15,14 +15,27 @@ public class ConsoleHelper {
         return getFromConsole(prompt, fun);
     }
 
-    public int getInteger(String prompt) {
+    public static int getInteger(String prompt) {
         return getFromConsole(prompt, n -> n > 0);
     }
 
-    public String getString(String prompt) {
-        System.out.println(prompt);
+    public static String getString(String prompt) {
+        System.out.print(prompt);
 
         return scannerIn.nextLine();
+    }
+
+    public static String getString(String prompt, Predicate<String> fun) {
+        while (true) {
+            System.out.print(prompt);
+            var s = scannerIn.nextLine();
+
+            if (fun.test(s)) {
+                return s;
+            }
+            
+            System.out.print("Ошибка! ");
+        }
     }
 
     private static int getFromConsole(String prompt, Predicate<Integer> fun) {
