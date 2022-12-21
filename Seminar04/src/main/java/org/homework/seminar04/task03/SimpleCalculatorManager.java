@@ -21,8 +21,8 @@ public class SimpleCalculatorManager {
         Logger logger = getLogger(logFilename);
 
         System.out.println("Вводите либо число, либо операцию (+, -, *, /)");
-        System.out.println("с - для отмены операции");
-        System.out.println("сс - сброс (после него отмена невозможна)");
+        System.out.println("c - для отмены операции");
+        System.out.println("cc - сброс (после него отмена невозможна)");
         System.out.println("exit - выход\n");
 
         var calc = new SimpleCalculator();
