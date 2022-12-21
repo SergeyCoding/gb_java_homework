@@ -13,11 +13,11 @@ public class HeapSortManager {
         int n = ConsoleHelper.getNaturalInteger("Введите размер массива: ");
 
 
-        var linkedList = ListGenerator.generateLinkedList(n);
-        System.out.println(Arrays.toString(linkedList.toArray()));
+        var list = ListGenerator.generateList(n);
+        System.out.println(Arrays.toString(list.toArray()));
 
-//        var revertLinkedList = new RevertLinkedList(linkedList);
-//        System.out.println(Arrays.toString(revertLinkedList.revert().toArray()));
+        var heapSort = new HeapSort(list);
+        System.out.println(Arrays.toString(heapSort.sort().toArray()));
     }
 }
 
