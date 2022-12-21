@@ -15,39 +15,45 @@ public class HeapSort {
             siftDown(i, list.size());
         }
 
-        var n = list.size();
-
-        while (n > 1) {
-            n = n - 1;
-            swap(0, n);
-            siftDown(0, n);
+        for (int i = list.size() - 1; i > 0; i--) {
+            swap(0, i);
+            siftDown(0, i);
         }
 
         return list;
     }
 
     private void siftDown(int curRoot, int size) {
-        int nMax = curRoot;
-        var curRootValue = list.get(curRoot);
+
+        var curNode = curRoot;
 
         while (true) {
-            curRoot = nMax;
 
-            var node1 = curRoot * 2 + 1;
-            var node2 = node1 + 1;
+            var indexMaxValue = getIndexMaxValue(size, curNode, curNode * 2 + 1, curNode * 2 + 2);
 
-            if ((node1 < size) && (list.get(node1) > curRootValue))
-                nMax = node1;
-
-            ++node1;
-            if ((node1 < size) && (list.get(node1) > list.get(nMax))) {
-                nMax = node1;
+            if (indexMaxValue == curNode) {
+                break;
             }
-            if (nMax == curRoot) break;
 
-            list.set(curRoot, list.get(nMax));
-            list.set(nMax, curRootValue);
+            swap(curNode, indexMaxValue);
+            curNode = indexMaxValue;
         }
+    }
+
+    private int getIndexMaxValue(int size, int curNode, int node1, int node2) {
+
+        var vCur = list.get(curNode);
+        var v1 = node1 < size ? list.get(node1) : Integer.MIN_VALUE;
+        var v2 = node2 < size ? list.get(node2) : Integer.MIN_VALUE;
+
+        if (vCur >= v1 && vCur >= v2) {
+            return curNode;
+        }
+
+        if (v1 > v2)
+            return node1;
+
+        return node2;
     }
 
     private void swap(int a, int b) {
