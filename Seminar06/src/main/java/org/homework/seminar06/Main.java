@@ -1,7 +1,7 @@
 package org.homework.seminar06;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 1. Подумать над структурой класса Ноутбук для магазина техники - выделить поля и методы. Реализовать в java.
@@ -27,12 +27,10 @@ public class Main {
         System.out.println("Seminar06");
         System.out.println("Магазин техники\n");
 
-        Set<Notebook> notebooks = new HashSet<>();
-        notebooks.add(new Notebook("Apple MacBook Air M1", "4", "", "Windows 10", "black"));
-        notebooks.add(new Notebook("Lenovo IdeaPad Duet Chromebook", "", "", "", ""));
-        notebooks.add(new Notebook("Lenovo IdeaPad Duet Chromebook", "", "", "", ""));
-        notebooks.add(new Notebook("Lenovo IdeaPad Duet Chromebook", "", "", "", ""));
-        notebooks.add(new Notebook("Lenovo IdeaPad Duet Chromebook", "", "", "", ""));
+        List<Notebook> notebooks = new ArrayList<>();
+
+        var notebookData = new NotebookData("data.txt");
+        notebooks = notebookData.loadNotebooks();
 
         System.out.println("1 - ОЗУ");
         System.out.println("2 - Объем ЖД");
@@ -41,4 +39,6 @@ public class Main {
 
         System.out.println(notebooks);
     }
+
+
 }
