@@ -15,6 +15,10 @@ public class ConsoleHelper {
         return getFromConsole(prompt, fun);
     }
 
+    public static int getNaturalInteger(String prompt, Predicate<Integer> fun, int defaultValue) {
+        return getFromConsole(String.format("%s [%d] ", prompt, defaultValue), fun, defaultValue);
+    }
+
     public static int getInteger(String prompt) {
         return getFromConsole(prompt, n -> n > 0);
     }
@@ -33,7 +37,7 @@ public class ConsoleHelper {
             if (fun.test(s)) {
                 return s;
             }
-            
+
             System.out.print("Ошибка! ");
         }
     }
@@ -43,6 +47,26 @@ public class ConsoleHelper {
             System.out.print(prompt);
             try {
                 var n = Integer.parseInt(scannerIn.nextLine());
+
+                if (fun.test(n)) {
+                    return n;
+                }
+            } catch (NumberFormatException ignored) {
+            }
+            System.out.print("Ошибка! ");
+        }
+    }
+
+    private static int getFromConsole(String prompt, Predicate<Integer> fun, int defaultValue) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                String s = scannerIn.nextLine();
+
+                if (s.isBlank())
+                    return defaultValue;
+
+                var n = Integer.parseInt(s);
 
                 if (fun.test(n)) {
                     return n;
