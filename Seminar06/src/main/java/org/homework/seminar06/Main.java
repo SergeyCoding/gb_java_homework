@@ -75,15 +75,6 @@ public class Main {
         }
     }
 
-    private static void chooseRam(Map<String, Integer> filterNotebook) {
-        System.out.println("Выберите ОЗУ от 4 Gb до 64 Gb");
-        var minRam = ConsoleHelper.getNaturalInteger("ОЗУ min:", x -> x >= 4 && x <= 64, 4);
-        var maxRam = ConsoleHelper.getNaturalInteger("ОЗУ max:", x -> x >= minRam && x <= 64, 64);
-        System.out.printf("ОЗУ: %d Gb - %d Gb\n", minRam, maxRam);
-        filterNotebook.put("ОЗУ min:", minRam);
-        filterNotebook.put("ОЗУ max:", maxRam);
-    }
-
     private static Set<String> getAvailableColors(List<Notebook> notebooks) {
         Set<String> osAll = new HashSet<>();
         for (var nb : notebooks) {

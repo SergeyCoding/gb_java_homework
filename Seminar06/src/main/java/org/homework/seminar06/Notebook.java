@@ -25,8 +25,8 @@ public class Notebook {
         return String.format("%s %s (ram: %d Gb, hdd: %d Gb, os: %s)", name, color, ram, hd, os);
     }
 
-    public boolean isPerfect(Map<String, Object> map) {
-        for (var f : map.entrySet()) {
+    public boolean isPerfect(Map<String, Object> conditions) {
+        for (var f : conditions.entrySet()) {
             if (f.getKey().equals("ОЗУmin") && ram < (int) f.getValue()) {
                 return false;
             }

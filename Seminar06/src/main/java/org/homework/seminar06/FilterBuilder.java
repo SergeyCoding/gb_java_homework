@@ -11,10 +11,6 @@ public class FilterBuilder {
     public FilterBuilder() {
     }
 
-    private void chooseRam() {
-        chooseMinMax("Выберите ОЗУ от 4 Gb до 64 Gb", "ОЗУ", 4, 64);
-    }
-
     public void chooseMinMax(String prompt, String criteria, int minValue, int maxValue) {
         System.out.println(prompt);
         var min = ConsoleHelper.getNaturalInteger(criteria + "min:", x -> x >= minValue && x <= maxValue, minValue);
@@ -29,7 +25,7 @@ public class FilterBuilder {
         for (int i = 0; i < list.size(); i++) {
             System.out.printf("%d - %s\n", i, list.get(i));
         }
-        var answer = ConsoleHelper.getNaturalInteger("OS:", x -> x >= 0 && x <= list.size(), list.size());
+        var answer = ConsoleHelper.getNaturalInteger(criteria + "> ", x -> x >= 0 && x <= list.size() - 1);
         filterNotebook.put(criteria, list.get(answer));
     }
 
