@@ -1,5 +1,7 @@
 package org.homework.seminar06;
 
+import java.util.Map;
+
 /**
  * 1 - ОЗУ
  * 2 - Объем ЖД
@@ -7,7 +9,7 @@ package org.homework.seminar06;
  * 4 - Цвет …
  */
 public class Notebook {
-    private final String name;
+    public final String name;
     public int ram;
     public int hd;
     public String os;
@@ -21,5 +23,30 @@ public class Notebook {
     @Override
     public String toString() {
         return String.format("%s %s (ram: %d Gb, hdd: %d Gb, os: %s)", name, color, ram, hd, os);
+    }
+
+    public boolean isPerfect(Map<String, Object> map) {
+        for (var f : map.entrySet()) {
+            if (f.getKey().equals("ОЗУmin") && ram < (int) f.getValue()) {
+                return false;
+            }
+            if (f.getKey().equals("ОЗУmax") && ram > (int) f.getValue()) {
+                return false;
+            }
+            if (f.getKey().equals("HDDmin") && hd < (int) f.getValue()) {
+                return false;
+            }
+            if (f.getKey().equals("HDDmax") && hd > (int) f.getValue()) {
+                return false;
+            }
+            if (f.getKey().equals("OS") && !os.equals(f.getValue())) {
+                return false;
+            }
+            if (f.getKey().equals("color") && !color.equals(f.getValue())) {
+                return false;
+            }
+
+        }
+        return true;
     }
 }

@@ -40,7 +40,7 @@ public class Main {
             System.out.println("2 - Объем ЖД");
             System.out.println("3 - Операционная система");
             System.out.println("4 - Цвет");
-            System.out.println("0 - Продолжить");
+            System.out.println("0 - Продолжить (вывести список)");
 
             var answer = ConsoleHelper.getNaturalInteger("> ", x -> x >= 0 && x <= 4);
 
@@ -50,11 +50,15 @@ public class Main {
 
             if (answer == 1) {
                 fb.chooseMinMax("Выберите ОЗУ от 4 Gb до 64 Gb", "ОЗУ", 4, 64);
-                continue;
             }
             if (answer == 2) {
                 fb.chooseMinMax("Выберите HDD от 256 Gb до 4096 Gb", "HDD", 256, 4096);
-                continue;
+            }
+            if (answer == 3) {
+                fb.chooseValue("Доступные операционные системы:", "OS", getAvailableOs(notebooks));
+            }
+            if (answer == 4) {
+                fb.chooseValue("Доступные цвета:", "color", getAvailableColors(notebooks));
             }
 
             System.out.println();
@@ -64,37 +68,10 @@ public class Main {
         System.out.println(fb.getMap());
 
         System.out.println("Ноутбуки, удовлетворяющие выбранным критериям:");
+        var nbList = notebooks.stream().filter(x -> x.isPerfect(fb.getMap())).sorted(Comparator.comparing(Notebook::toString)).toList();
 
-
-        System.out.println("\nВыберите HDD от 256 Gb до 4096 Gb");
-        var minHdd = ConsoleHelper.getNaturalInteger("HDD min:", x -> x >= 256 && x <= 4096, 256);
-        var maxHdd = ConsoleHelper.getNaturalInteger("HDD max:", x -> x >= minHdd && x <= 4096, 4096);
-        System.out.printf("HDD: %d Gb - %d Gb\n", minHdd, maxHdd);
-
-        System.out.println("\nДоступные операционные системы:");
-        List<String> osAll = new ArrayList<>(getAvailableOs(notebooks));
-        for (int i = 0; i < osAll.size(); i++) {
-            System.out.printf("%d - %s\n", i, osAll.get(i));
-        }
-        System.out.printf("%d - %s\n", osAll.size(), "любая");
-        var os = ConsoleHelper.getNaturalInteger("OS:", x -> x >= 0 && x <= osAll.size(), osAll.size());
-        if (os < osAll.size()) {
-            System.out.printf("OS: %s\n", osAll.get(os));
-        } else {
-            System.out.printf("OS: %s\n", "любая");
-        }
-
-        System.out.println("\nДоступные цвета:");
-        List<String> colorAll = new ArrayList<>(getAvailableColors(notebooks));
-        for (int i = 0; i < colorAll.size(); i++) {
-            System.out.printf("%d - %s\n", i, colorAll.get(i));
-        }
-        System.out.printf("%d - %s\n", colorAll.size(), "любой");
-        var color = ConsoleHelper.getNaturalInteger("color:", x -> x >= 0 && x <= colorAll.size(), colorAll.size());
-        if (color < colorAll.size()) {
-            System.out.printf("color: %s\n", colorAll.get(color));
-        } else {
-            System.out.printf("color: %s\n", "любой");
+        for (var nb : nbList) {
+            System.out.println(nb);
         }
     }
 
