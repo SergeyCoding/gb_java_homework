@@ -12,7 +12,7 @@ public class Main {
         System.out.println("\nTask03");
         task03();
 
-        System.out.println("#");
+        System.out.println("\n#");
     }
 
     private static void task01() {
