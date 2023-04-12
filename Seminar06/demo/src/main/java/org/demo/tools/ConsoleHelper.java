@@ -1,4 +1,4 @@
-package org.homework.tools;
+package org.demo.tools;
 
 import java.util.Scanner;
 import java.util.function.Predicate;
