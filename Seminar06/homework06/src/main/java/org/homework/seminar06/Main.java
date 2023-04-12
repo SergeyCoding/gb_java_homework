@@ -1,6 +1,6 @@
 package org.homework.seminar06;
 
-import org.homework.tools.ConsoleHelper;
+import org.demo.tools.ConsoleHelper;
 import org.homework.tools.NotebookGenerator;
 
 import java.util.*;
