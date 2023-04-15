@@ -9,8 +9,17 @@ public class Main {
 
         var tree = new Tree<Integer>();
 
-        tree.add(1);
-
+        tree.add(10);
+        System.out.println(tree);
+        tree.add(2);
+        System.out.println(tree);
+        tree.add(20);
+        System.out.println(tree);
+        tree.add(19);
+        System.out.println(tree);
+        tree.add(20);
+        System.out.println(tree);
+        tree.add(20);
         System.out.println(tree);
 
 
