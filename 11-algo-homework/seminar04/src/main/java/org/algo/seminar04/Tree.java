@@ -29,14 +29,20 @@ public class Tree<V extends Comparable<V>> {
         var t4 = node.right;
         //var t5 = node.right.right;
 
-        parent.changeChild(node, t4);
+        if (parent != null) {
+            parent.changeChild(node, t4);
+        } else {
+            t4.parent = null;
+            root = t4;
+        }
+
+        //t2.addLeft(t1);
+        t2.addRight(t3);
 
         t4.addLeft(t2);
         //t4.addRight(t5);
         t4.isRed = t2.isRed;
 
-        //t2.addLeft(t1);
-        t2.addRight(t3);
         t2.setRed();
     }
 
@@ -49,15 +55,20 @@ public class Tree<V extends Comparable<V>> {
         var t4 = node;
         //var t5 = node.right;
 
-        parent.changeChild(node, t2);
-
-        //t2.addLeft(t1);
-        t2.addRight(t4);
-        t2.setBlack();
+        if (parent != null)
+            parent.changeChild(node, t2);
+        else {
+            t2.parent = null;
+            root = t2;
+        }
 
         t4.addLeft(t3);
         //t4.addRight(t5);
         t4.setRed();
+
+        //t2.addLeft(t1);
+        t2.addRight(t4);
+        t2.setBlack();
     }
 
     private void swapColor(Node node) {
@@ -67,19 +78,26 @@ public class Tree<V extends Comparable<V>> {
     }
 
     private void reBalance(Node n) {
-        if (n == root && n.isRed) {
-            n.isRed = false;
+        if (n == null)
+            return;
+
+        if (n.left != null && n.right != null && n.right.isRed && n.left.isRed) {
+            swapColor(n);
         }
 
-        if (n.left != null && n.right != null) {
-            if (n.right.isRed && !n.left.isRed) leftRotate(n);
-
-            if (n.right.isRed && n.left.isRed) swapColor(n);
+        if (n.right != null && n.right.isRed) {
+            leftRotate(n);
         }
 
-        if (n.left != null && n.left.left != null) {
-            if (n.left.isRed && n.left.left.isRed) rightRotate(n);
+        if (n.left != null && n.left.left != null && n.left.isRed && n.left.left.isRed) {
+            rightRotate(n);
         }
+
+        if (n == root && root.isRed) {
+            root.setBlack();
+        }
+
+        reBalance(n.parent);
     }
 
 
@@ -96,8 +114,7 @@ public class Tree<V extends Comparable<V>> {
     public void add(V value, Node current) {
         if (value.compareTo(current.value) < 0) {
             if (current.left == null) {
-                current.left = new Node(value);
-                reBalance(current.left);
+                current.addLeft(value);
                 reBalance(current);
                 return;
             }
@@ -105,8 +122,7 @@ public class Tree<V extends Comparable<V>> {
             add(value, current.left);
         } else {
             if (current.right == null) {
-                current.right = new Node(value);
-                reBalance(current.right);
+                current.addRight(value);
                 reBalance(current);
                 return;
             }
@@ -148,20 +164,28 @@ public class Tree<V extends Comparable<V>> {
 
         private void addLeft(Node n) {
             this.left = n;
-            this.left.parent = this;
+
+            if (this.left != null)
+                this.left.parent = this;
         }
 
         private void addRight(Node n) {
             this.right = n;
-            this.right.parent = this;
+
+            if (this.right != null)
+                this.right.parent = this;
         }
 
         private void changeChild(Node from, Node to) {
-            if (right == from)
+            if (right == from) {
+                from.parent = null;
                 addRight(to);
+            }
 
-            if (left == from)
+            if (left == from) {
+                from.parent = null;
                 addLeft(to);
+            }
         }
 
         private void addLeft(V value) {
