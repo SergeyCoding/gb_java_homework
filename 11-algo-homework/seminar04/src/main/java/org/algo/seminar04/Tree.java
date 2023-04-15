@@ -20,66 +20,65 @@ public class Tree<V extends Comparable<V>> {
         return false;
     }
 
-    private void leftrotate(Node node) {
-        var pivot = node;
+    private void leftRotate(Node node) {
+        var parent = node.parent;
 
-        var t1 = node.left;
-        var t2 = new Node(node);
+        //var t1 = node.left;
+        var t2 = node;
         var t3 = node.right.left;
         var t4 = node.right;
-        var t5 = node.right.right;
+        //var t5 = node.right.right;
 
-        pivot.value = t4.value;
-        pivot.isRed = t2.isRed;
-        pivot.left = t2;
-        pivot.right = t5;
+        parent.changeChild(node, t4);
 
-        t2.isRed = true;
-        t2.left = t1;
-        t2.right = t3;
+        t4.addLeft(t2);
+        //t4.addRight(t5);
+        t4.isRed = t2.isRed;
+
+        //t2.addLeft(t1);
+        t2.addRight(t3);
+        t2.setRed();
     }
 
-    private void rightrotate(Node node) {
-        var pivot = node;
+    private void rightRotate(Node node) {
+        var parent = node.parent;
 
-        var t1 = node.left.left;
+        //var t1 = node.left.left;
         var t2 = node.left;
         var t3 = node.left.right;
-        var t4 = new Node(node);
-        var t5 = node.right;
+        var t4 = node;
+        //var t5 = node.right;
 
-        pivot.value = t2.value;
-        pivot.isRed = t4.isRed;
-        pivot.left = t1;
-        pivot.right = t4;
+        parent.changeChild(node, t2);
 
-        t4.isRed = true;
-        t4.left = t3;
-        t4.right = t5;
+        //t2.addLeft(t1);
+        t2.addRight(t4);
+        t2.setBlack();
+
+        t4.addLeft(t3);
+        //t4.addRight(t5);
+        t4.setRed();
     }
 
-    private void swapcolor(Node node) {
-        node.isRed = true;
-        node.left.isRed = false;
-        node.right.isRed = false;
+    private void swapColor(Node node) {
+        node.setRed();
+        node.left.setBlack();
+        node.right.setBlack();
     }
 
-    private void rebalance(Node n) {
+    private void reBalance(Node n) {
         if (n == root && n.isRed) {
             n.isRed = false;
         }
 
         if (n.left != null && n.right != null) {
-            if (n.right.isRed && !n.left.isRed)
-                leftrotate(n);
+            if (n.right.isRed && !n.left.isRed) leftRotate(n);
 
-            if (n.right.isRed && n.left.isRed)
-                swapcolor(n);
+            if (n.right.isRed && n.left.isRed) swapColor(n);
         }
 
         if (n.left != null && n.left.left != null) {
-            if (n.left.isRed && n.left.left.isRed)
-                rightrotate(n);
+            if (n.left.isRed && n.left.left.isRed) rightRotate(n);
         }
     }
 
@@ -87,7 +86,7 @@ public class Tree<V extends Comparable<V>> {
     public void add(V value) {
         if (root == null) {
             root = new Node(value);
-            rebalance(root);
+            reBalance(root);
             return;
         }
 
@@ -98,8 +97,8 @@ public class Tree<V extends Comparable<V>> {
         if (value.compareTo(current.value) < 0) {
             if (current.left == null) {
                 current.left = new Node(value);
-                rebalance(current.left);
-                rebalance(current);
+                reBalance(current.left);
+                reBalance(current);
                 return;
             }
 
@@ -107,8 +106,8 @@ public class Tree<V extends Comparable<V>> {
         } else {
             if (current.right == null) {
                 current.right = new Node(value);
-                rebalance(current.right);
-                rebalance(current);
+                reBalance(current.right);
+                reBalance(current);
                 return;
             }
 
@@ -116,40 +115,71 @@ public class Tree<V extends Comparable<V>> {
         }
     }
 
-    private String gets(Node node) {
-        if (node == null)
-            return "-";
+    private String treeFormatter(Node node) {
+        if (node == null) return "-";
 
         if (node.left == null && node.right == null) {
             return (node.isRed ? "*" : "") + node.value;
         }
 
-        return (node.isRed ? "*" : "") + node.value + "(" + gets(node.left) + ";" + gets(node.right) + ")";
+        return (node.isRed ? "*" : "") + node.value + "(" + treeFormatter(node.left) + ";" + treeFormatter(node.right) + ")";
     }
 
     @Override
     public String toString() {
-        return gets(root);
+        return treeFormatter(root);
     }
 
     private class Node {
-
         private V value;
-
         private boolean isRed;
+        private Node parent;
         private Node left;
         private Node right;
 
-        Node(Node node) {
-            this.value = node.value;
-            this.isRed = node.isRed;
-        }
 
         Node(V value) {
             this.value = value;
             this.isRed = true;
+            this.parent = null;
             this.left = null;
             this.right = null;
+        }
+
+        private void addLeft(Node n) {
+            this.left = n;
+            this.left.parent = this;
+        }
+
+        private void addRight(Node n) {
+            this.right = n;
+            this.right.parent = this;
+        }
+
+        private void changeChild(Node from, Node to) {
+            if (right == from)
+                addRight(to);
+
+            if (left == from)
+                addLeft(to);
+        }
+
+        private void addLeft(V value) {
+            this.left = new Node(value);
+            this.left.parent = this;
+        }
+
+        private void addRight(V value) {
+            this.right = new Node(value);
+            this.right.parent = this;
+        }
+
+        private void setRed() {
+            this.isRed = true;
+        }
+
+        private void setBlack() {
+            this.isRed = false;
         }
     }
 }
