@@ -10,6 +10,9 @@ public class Main {
         System.out.println("\nTask 02");
         new Task02().execute();
 
+        System.out.println("\nTask 03");
+        new Task03().execute();
+
         System.out.println("\n#");
     }
 
