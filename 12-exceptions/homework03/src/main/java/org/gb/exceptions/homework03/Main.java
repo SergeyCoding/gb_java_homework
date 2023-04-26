@@ -1,8 +1,8 @@
-package org.gb.exceptions;
+package org.gb.exceptions.homework03;
 
 
-import org.gb.exceptions.exceptions.WrongLoginException;
-import org.gb.exceptions.exceptions.WrongPasswordException;
+import org.gb.exceptions.homework03.exceptions.WrongLoginException;
+import org.gb.exceptions.homework03.exceptions.WrongPasswordException;
 
 /**
  * Создать статический метод который принимает на вход три параметра: login,

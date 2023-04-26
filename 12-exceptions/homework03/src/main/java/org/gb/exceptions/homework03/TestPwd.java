@@ -1,4 +1,4 @@
-package org.gb.exceptions;
+package org.gb.exceptions.homework03;
 
 public class TestPwd {
     String login;

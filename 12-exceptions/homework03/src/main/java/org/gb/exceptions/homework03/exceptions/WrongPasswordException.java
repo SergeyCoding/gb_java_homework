@@ -1,4 +1,4 @@
-package org.gb.exceptions.exceptions;
+package org.gb.exceptions.homework03.exceptions;
 
 public class WrongPasswordException extends Exception {
 
